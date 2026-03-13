@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@AiméDelgrès Charleston Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6EFE2;
+    --deep-green: #1B3829;
+    --gold: #C8923A;
+    --rust: #B5451A;
+    --warm-white: #FAF7F1;
+    --charcoal: #1E1E1E;
+    --sage: #5D8068;
+    --parchment: #EBD9BC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ─── PART SWITCHER ─── */
+  .part-switcher {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--charcoal);
+  }
+  .part-btn {
+    background: none;
+    border: none;
+    padding: 18px 24px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    position: relative;
+  }
+  .part-btn .part-num {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+  }
+  .part-btn.active-part { color: white; }
+  .part-btn.active-part .part-num { color: var(--gold); }
+  #btn-family.active-part { border-bottom-color: var(--gold); }
+  #btn-couples.active-part { border-bottom-color: var(--gold); }
+  .part-btn:hover { color: rgba(255,255,255,0.75); }
+
+  /* ─── PART PANELS ─── */
+  .part-panel { display: none; }
+  .part-panel.active { display: block; }
+
+  /* ══════════════════════════════
+     PART 1 — FAMILY
+  ══════════════════════════════ */
+
+  .fam-header {
+    background: var(--deep-green);
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fam-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 50px,
+      rgba(201,150,58,0.05) 50px,
+      rgba(201,150,58,0.05) 100px
+    );
+  }
+  .part-label {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .fam-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.05;
+    position: relative;
+  }
+  .fam-header h1 em { color: var(--gold); font-style: italic; }
+  .header-dates {
+    font-size: 13px;
+    color: rgba(246,239,226,0.55);
+    margin-top: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .fam-intro-strip {
+    background: var(--gold);
+    padding: 18px 40px;
+    text-align: center;
+  }
+  .fam-intro-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--deep-green);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ─── TABS (shared) ─── */
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--parchment);
+    flex-wrap: wrap;
+    padding: 0 24px;
+    background: white;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    padding: 16px 22px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+  .tab-btn.active { color: var(--charcoal); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .fam-tabs .tab-btn::after { background: var(--deep-green); }
+  .couples-tabs .tab-btn::after { background: var(--deep-green); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ─── MAIN LAYOUT ─── */
+  main { max-width: 1080px; margin: 0 auto; padding: 44px 24px 80px; }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--rust);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--parchment);
+  }
+
+  /* ─── CARDS ─── */
+  .card-grid { display: grid; gap: 20px; }
+
+  .card {
+    background: white;
+    border: 1px solid var(--parchment);
+    border-left: 4px solid var(--deep-green);
+    padding: 26px 30px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  }
+  .card.gold-accent { border-left-color: var(--gold); }
+  .card.rust-accent { border-left-color: var(--rust); }
+  .card.navy-accent { border-left-color: var(--deep-green); }
+  .card.blue-accent { border-left-color: var(--gold); }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .card-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    white-space: nowrap;
+  }
+  .tag-must { background: var(--deep-green); color: var(--cream); }
+  .tag-free { background: var(--sage); color: white; }
+  .tag-foodie { background: var(--rust); color: white; }
+  .tag-culture { background: #3D2B1A; color: var(--cream); }
+  .tag-kids { background: #4A7EA5; color: white; }
+  .tag-couples { background: var(--deep-green); color: var(--cream); }
+  .tag-romance { background: #7A3040; color: #F0C8D0; }
+  .tag-history { background: #3D2B1A; color: #DEC9A8; }
+  .tag-first { background: var(--gold); color: var(--deep-green); font-weight: 800; }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.78;
+    color: #454545;
+    margin-bottom: 16px;
+  }
+  .card-desc strong { color: var(--charcoal); }
+
+  .tom-note {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 11px 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--deep-green);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .tom-note::before {
+    content: '✦ @AiméDelgrès: ';
+    font-weight: 700;
+    font-style: normal;
+    color: var(--gold);
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--parchment);
+  }
+  .price-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #bbb; margin-bottom: 3px;
+  }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--deep-green);
+  }
+  .price-sub { font-size: 11px; color: #999; margin-top: 2px; }
+  .must-order { font-size: 12px; color: var(--rust); font-weight: 600; }
+  .must-order span { color: #777; font-weight: 400; }
+
+  /* ─── BUDGET BOX ─── */
+  .budget-box {
+    margin-top: 36px;
+    padding: 30px 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+    text-align: center;
+  }
+  .budget-box.fam-budget { background: var(--deep-green); color: var(--cream); }
+  .budget-box.couple-budget { background: var(--deep-green); color: var(--cream); }
+  .b-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 5px; }
+  .b-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--gold);
+  }
+  .couple-budget .b-amount { color: var(--gold); }
+  .b-sub { font-size: 10px; opacity: 0.5; margin-top: 3px; }
+  .budget-total {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 18px;
+  }
+  .budget-total .b-amount { font-size: 38px; }
+
+  /* ─── TIMELINE ─── */
+  .day-block { margin-bottom: 36px; }
+  .day-header {
+    padding: 14px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 2px;
+  }
+  .fam-day-header { background: var(--deep-green); color: var(--cream); }
+  .couple-day-header { background: var(--deep-green); color: var(--cream); }
+  .day-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px; line-height: 1;
+  }
+  .fam-day-header .day-num { color: var(--gold); }
+  .couple-day-header .day-num { color: var(--gold); }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700;
+  }
+  .day-sub { font-size: 12px; opacity: 0.6; margin-top: 3px; }
+
+  .timeline {
+    border-left: 2px solid var(--parchment);
+    margin-left: 22px;
+    padding-left: 30px;
+  }
+  .tl-item {
+    position: relative;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--parchment);
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -37px; top: 24px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px;
+  }
+  .fam-timeline .tl-item::before { background: var(--gold); color: var(--gold); border: 2px solid white; box-shadow: 0 0 0 2px var(--gold); }
+  .couple-timeline .tl-item::before { background: var(--gold); color: var(--gold); border: 2px solid white; box-shadow: 0 0 0 2px var(--gold); }
+
+  .tl-time { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); margin-bottom: 4px; }
+  .tl-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+  .tl-note { font-size: 13px; color: #555; line-height: 1.65; }
+  .tl-cost {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+  }
+  .fam-cost { background: var(--parchment); color: var(--deep-green); }
+  .couple-cost { background: var(--parchment); color: var(--deep-green); }
+
+  /* ─── TIPS ─── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .tip-card {
+    padding: 22px;
+  }
+  .fam-tip { background: var(--deep-green); color: var(--cream); }
+  .couple-tip { background: var(--deep-green); color: var(--cream); }
+
+  .tip-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+  .tip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .fam-tip .tip-title { color: var(--gold); }
+  .couple-tip .tip-title { color: var(--gold); }
+  .tip-body { font-size: 13px; line-height: 1.65; opacity: 0.82; }
+
+  .warning-card {
+    padding: 22px 28px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-top: 6px;
+  }
+  .fam-warning { background: var(--rust); color: white; }
+  .couple-warning { background: var(--rust); color: white; }
+  .w-icon { font-size: 28px; flex-shrink: 0; }
+  .w-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 700; margin-bottom: 5px; }
+  .w-body { font-size: 13px; line-height: 1.6; opacity: 0.9; }
+
+  /* ══════════════════════════════
+     PART 2 — COUPLES
+  ══════════════════════════════ */
+  .couples-header {
+    background: var(--deep-green);
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .couples-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 50px,
+      rgba(201,150,58,0.05) 50px,
+      rgba(201,150,58,0.05) 100px
+    );
+  }
+  .couples-part-label {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .couples-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5.5vw, 64px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.08;
+    position: relative;
+  }
+  .couples-header h1 em { color: var(--gold); font-style: italic; }
+  .couples-intro-strip {
+    background: var(--gold);
+    border-top: 1px solid rgba(201,150,58,0.2);
+    padding: 18px 40px;
+    text-align: center;
+  }
+  .couples-intro-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(246,239,226,0.9);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .couple-note {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 11px 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--deep-green);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .couple-note::before {
+    content: '✦ @AiméDelgrès: ';
+    font-weight: 700;
+    font-style: normal;
+    color: var(--gold);
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .card.couples-card {
+    background: white;
+    border-color: var(--parchment);
+    color: var(--charcoal);
+  }
+  .card.couples-card .card-name { color: var(--charcoal); }
+  .card.couples-card .card-desc { color: #454545; }
+  .card.couples-card .card-desc strong { color: var(--charcoal); }
+  .card.couples-card .price-amount { color: var(--deep-green); }
+  .card.couples-card .card-footer { border-top-color: var(--parchment); }
+  .card.couples-card .must-order { color: var(--rust); }
+  .card.couples-card .must-order span { color: #777; }
+
+  /* ─── DIVIDER ─── */
+  .part-divider {
+    text-align: center;
+    padding: 10px;
+    background: var(--charcoal);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 28px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .fam-header, .couples-header { padding: 40px 18px 36px; }
+    main { padding: 28px 14px 60px; }
+    .card { padding: 18px; }
+    .tab-btn { padding: 12px 12px; font-size: 10px; }
+    .budget-box { padding: 22px 18px; }
+    .part-btn .part-num { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PART SWITCHER -->
+<div class="part-switcher">
+  <button class="part-btn active-part" id="btn-family" onclick="switchPart('family')">
+    <span class="part-num">PART I</span>
+    🏠 Family Visit · March 13–15
+  </button>
+  <button class="part-btn" id="btn-couples" onclick="switchPart('couples')">
+    <span class="part-num">PART II</span>
+    🥂 Couples Trip · When You're Ready
+  </button>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     PART 1 — FAMILY VISIT
+════════════════════════════════════════════════════ -->
+<div id="part-family" class="part-panel active">
+
+  <div class="fam-header">
+    <div class="part-label">Part I · Family Visit · March 13–15, 2026</div>
+    <h1>Stop Playing &<br><em>Experience Charleston Right</em></h1>
+    <p class="header-dates">For My Canes Fam · Family of 5 · Two Adults, Three Kids</p>
+  </div>
+  <div class="fam-intro-strip">
+    <p>"Y'all already know about Rainbow Row. This is everything else — the food, the history, the culture, and the spots that'll make you never want to leave the Low Country."</p>
+  </div>
+
+  <div style="background:white; position:sticky; top:57px; z-index:99;">
+    <div class="tabs fam-tabs">
+      <button class="tab-btn active" onclick="switchTab(this,'fam')">🍽️ Food</button>
+      <button class="tab-btn" onclick="switchTab(this,'fam')">🗺️ Activities</button>
+      <button class="tab-btn" onclick="switchTab(this,'fam')">📅 Itinerary</button>
+      <button class="tab-btn" onclick="switchTab(this,'fam')">✦ Tips</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- FOOD -->
+    <div class="fam-tab-panel tab-panel active">
+      <p class="section-label">Where You're Eating — No Chains. Not Once.</p>
+      <div class="card-grid">
+
+        <div class="card gold-accent">
+          <div class="card-header">
+            <div class="card-name">Callie's Hot Little Biscuit</div>
+            <span class="card-tag tag-first">First Stop</span>
+          </div>
+          <div class="card-desc">King Street. Breakfast. <strong>Non-negotiable first morning stop.</strong> Charleston in biscuit form — flaky, buttery, stuffed with things that will rearrange your priorities in life. The line moves fast. Get there before 10am. Kids will think this is the best breakfast of their lives. They will be correct.</div>
+          <div class="tom-note">Order the pimento cheese biscuit. I will know if you skipped it.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$30–40</div><div class="price-sub">$5–8 per biscuit</div></div>
+            <div class="must-order">Must Order: <span>Pimento Cheese Biscuit, Egg + Ham Biscuit</span></div>
+          </div>
+        </div>
+
+        <div class="card rust-accent">
+          <div class="card-header">
+            <div class="card-name">Leon's Oyster Shop</div>
+            <span class="card-tag tag-must">Family Dinner HQ</span>
+          </div>
+          <div class="card-desc">Loud, welcoming, genuinely fun. <strong>The fried chicken is quietly one of the best in the South.</strong> Don't let the oyster shop name fool your kids — there's food for everyone at this table. Adults get the raw bar, kids get the best fried chicken of their lives. Nobody leaves unhappy. This is your Saturday night move.</div>
+          <div class="tom-note">Budget for extra oysters. You'll want extra oysters. The fried chicken will make you question every previous fried chicken experience you've had.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$75–125</div><div class="price-sub">$15–25/person</div></div>
+            <div class="must-order">Must Order: <span>Fried Chicken, Half Shell Oysters, Fish Sandwich</span></div>
+          </div>
+        </div>
+
+        <div class="card gold-accent">
+          <div class="card-header">
+            <div class="card-name">Husk</div>
+            <span class="card-tag tag-foodie">The Send-Off Dinner</span>
+          </div>
+          <div class="card-desc">James Beard-recognized Southern cuisine inside a <strong>historic 1893 mansion on Queen Street.</strong> Menu changes daily based on what's local and seasonal — that's not a gimmick, that's a philosophy. This is the meal you talk about on the drive home. One elevated sit-down dinner this weekend: this is it.</div>
+          <div class="tom-note">Order whatever is seasonal. Order what the server recommends. This is the kind of dinner that makes you book a return trip.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$110–150</div><div class="price-sub">$35–50/adult · $12–15/kids</div></div>
+            <div class="must-order">Must Order: <span>Whatever's seasonal + the cheeseburger if at lunch</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-name">167 Raw</div>
+            <span class="card-tag tag-foodie">Lunch Gem</span>
+          </div>
+          <div class="card-desc">Tiny spot, massive reputation. <strong>The lobster roll is worth every penny</strong> — properly dressed, generously filled, split-top perfection. Get here early or stand on the sidewalk. That's not a con, that's a tradition.</div>
+          <div class="tom-note">Yes the lobster roll is $30. Yes you'll want two. Yes it's worth it. You came to Charleston, not Olive Garden.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$80–100</div><div class="price-sub">$20–30/person</div></div>
+            <div class="must-order">Must Order: <span>Lobster Roll, Fish Tacos, Oyster Po'Boy</span></div>
+          </div>
+        </div>
+
+        <div class="card rust-accent">
+          <div class="card-header">
+            <div class="card-name">Xiao Bao Biscuit</div>
+            <span class="card-tag tag-culture">Wildcard Pick</span>
+          </div>
+          <div class="card-desc">Asian-Southern fusion that sounds like a fever dream and tastes like a revelation. <strong>The Okonomiyaki</strong> — a Japanese-Southern pancake — will confuse and delight everyone at the table. This is the "only in Charleston" pick. A city that took two completely distinct food traditions and made them argue productively.</div>
+          <div class="tom-note">Order adventurously. This is the restaurant that proves Charleston's food scene is not just grits and shrimp. Trust the menu — it knows what it's doing.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$60–80</div><div class="price-sub">$15–20/person</div></div>
+            <div class="must-order">Must Order: <span>Okonomiyaki, Dan Dan Noodles, Seasonal Dumplings</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="budget-box fam-budget">
+        <div><div class="b-label">Breakfast</div><div class="b-amount">~$35</div><div class="b-sub">Callie's</div></div>
+        <div><div class="b-label">Lunch</div><div class="b-amount">~$90</div><div class="b-sub">167 Raw</div></div>
+        <div><div class="b-label">Night 1</div><div class="b-amount">~$100</div><div class="b-sub">Leon's</div></div>
+        <div><div class="b-label">Night 2</div><div class="b-amount">~$130</div><div class="b-sub">Husk</div></div>
+        <div><div class="b-label">Snacks</div><div class="b-amount">~$40</div><div class="b-sub">Market + extras</div></div>
+        <div class="budget-total"><div class="b-label">Total Food Est. · Family of 5</div><div class="b-amount">$350–500</div><div class="b-sub">Worth every dollar</div></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITIES -->
+    <div class="fam-tab-panel tab-panel">
+      <p class="section-label">Beyond Rainbow Row — The Real Charleston</p>
+      <div class="card-grid">
+
+        <div class="card gold-accent">
+          <div class="card-header">
+            <div class="card-name">Magnolia Plantation & Gardens</div>
+            <span class="card-tag tag-must">Don't Miss</span>
+          </div>
+          <div class="card-desc">Disney has beautiful landscaping. <strong>Magnolia has been doing it since 1676.</strong> One of the oldest public gardens in America. The wildlife tram winds through Spanish-moss-draped wetlands — the kids will absolutely lose their minds over alligators and herons in the actual wild.</div>
+          <div class="tom-note">More accessible than Cypress Gardens with kids — better paths, more to see in less time. Morning light in those gardens is movie-worthy. This is the one you don't skip.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$60–90</div><div class="price-sub">~$20/adult · ~$10/kids · Tram +$8pp</div></div>
+            <div class="must-order">Best for: <span>All ages · 2–3 hrs · Morning visit</span></div>
+          </div>
+        </div>
+
+        <div class="card rust-accent">
+          <div class="card-header">
+            <div class="card-name">Fort Sumter National Monument</div>
+            <span class="card-tag tag-culture">Living History</span>
+          </div>
+          <div class="card-desc">The Civil War started on this exact piece of ground. Not in a textbook — <strong>on this actual harbor, in this actual fort.</strong> Your kids are Disney kids who love a story with a setting. Fort Sumter IS the setting. Ferry ride included. They're hyped before you dock.</div>
+          <div class="tom-note">Book ferry tickets before you leave. The NPS rangers here are genuinely excellent storytellers. Let them do their thing — step back and watch the kids get hooked.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">~$101</div><div class="price-sub">~$25/adult · ~$17/kids · Ferry included</div></div>
+            <div class="must-order">Best for: <span>Ages 7+ · 2.5 hrs total · Pre-book required</span></div>
+          </div>
+        </div>
+
+        <div class="card gold-accent">
+          <div class="card-header">
+            <div class="card-name">Int'l African American Museum</div>
+            <span class="card-tag tag-culture">The One</span>
+          </div>
+          <div class="card-desc">Charleston was the largest port of entry for enslaved Africans in North America. <strong>This museum sits on Gadsden's Wharf — the exact ground where they arrived.</strong> Opened 2023. Architecturally extraordinary, emotionally transformative. Not a sad museum — a powerful, dignified, and ultimately triumphant one.</div>
+          <div class="tom-note">I am biased. I am right. Even one hour here will change how your kids understand American history. That is the whole point of travel. Book timed entry ahead.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">$60–75</div><div class="price-sub">~$18/adult · ~$10/kids</div></div>
+            <div class="must-order">Best for: <span>All ages · 1.5–2 hrs · Timed entry required</span></div>
+          </div>
+        </div>
+
+        <div class="card blue-accent">
+          <div class="card-header">
+            <div class="card-name">South Carolina Aquarium</div>
+            <span class="card-tag tag-kids">Kid Lock-In</span>
+          </div>
+          <div class="card-desc">The controlled chaos your kids need. Right on the harbor. <strong>Four-story Great Ocean Tank that genuinely impresses.</strong> Touch tanks, harbor views, 2+ hours easy. This isn't SeaWorld — it's better because it's Charleston's.</div>
+          <div class="tom-note">Hit this after Fort Sumter on Day 1. Kids burn energy, adults get a breather, everyone wins. Splurge on the 4D theater if the kids are into it.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Family of 5</div><div class="price-amount">~$124</div><div class="price-sub">~$32/adult · ~$20/kids</div></div>
+            <div class="must-order">Best for: <span>Ages 4+ · 2 hrs · Weekday mornings easier</span></div>
+          </div>
+        </div>
+
+        <div class="card rust-accent">
+          <div class="card-header">
+            <div class="card-name">Charleston City Market</div>
+            <span class="card-tag tag-culture">Living Culture</span>
+          </div>
+          <div class="card-desc">Operating since the 1790s. <strong>Gullah-Geechee sweetgrass basket weavers have been here for generations</strong> — a living African American art form, not a souvenir booth. Watch the women weave. Ask questions. Buy a basket. That's not a souvenir — that's an artifact with lineage.</div>
+          <div class="tom-note">Budget for a basket. $40–80 for a quality piece. You'll have it for decades. Better investment than a snow globe and you know it.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Est. Spend</div><div class="price-amount">$20–100</div><div class="price-sub">Free entry · Baskets $30–200+</div></div>
+            <div class="must-order">Best for: <span>All ages · 45–90 min · Great for browsing</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-name">Waterfront Park</div>
+            <span class="card-tag tag-free">Free</span>
+          </div>
+          <div class="card-desc">Yes, you're going to see the Pineapple Fountain. Fine. But <strong>walk the whole park, sit on the harbor swings, and just breathe.</strong> This is where Charleston exhales. Kids can run the splash fountains. The view at sunset is something money genuinely cannot buy — and it's free.</div>
+          <div class="tom-note">Bring snacks. Sit on the swings. Use this between activities to decompress. This park earns its spot on every itinerary every single time.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Cost</div><div class="price-amount">FREE</div><div class="price-sub">Bring snacks. Stay awhile.</div></div>
+            <div class="must-order">Best for: <span>All ages · Flexible · Especially beautiful at sunset</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="budget-box fam-budget">
+        <div><div class="b-label">IAAM</div><div class="b-amount">~$68</div></div>
+        <div><div class="b-label">Fort Sumter</div><div class="b-amount">~$101</div></div>
+        <div><div class="b-label">Aquarium</div><div class="b-amount">~$124</div></div>
+        <div><div class="b-label">Magnolia</div><div class="b-amount">~$80</div></div>
+        <div><div class="b-label">City Market</div><div class="b-amount">$0–100</div></div>
+        <div class="budget-total"><div class="b-label">Activities Weekend Est. · Choose 3–4</div><div class="b-amount">$300–475</div><div class="b-sub">Family of 5 · Keep it sane</div></div>
+      </div>
+    </div>
+
+    <!-- ITINERARY -->
+    <div class="fam-tab-panel tab-panel">
+      <p class="section-label">Tom's Recommended Weekend Flow · March 13–15</p>
+
+      <div class="day-block">
+        <div class="day-header fam-day-header">
+          <div class="day-num">FRI</div>
+          <div><div class="day-title">Friday Evening — Arrive & Eat Well</div><div class="day-sub">No big plans. Just land, breathe, and eat somewhere good.</div></div>
+        </div>
+        <div class="timeline fam-timeline">
+          <div class="tl-item">
+            <div class="tl-time">Evening Arrival</div>
+            <div class="tl-name">🚗 Check In · Walk King Street</div>
+            <div class="tl-note">King Street is the main strip — boutiques, restaurants, good energy. Get a feel for the city without an agenda. Let the kids stretch their legs.</div>
+            <span class="tl-cost fam-cost">Free · Just vibes</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">Dinner</div>
+            <div class="tl-name">🥢 Xiao Bao Biscuit</div>
+            <div class="tl-note">Low-key, fun, approachable for families. The Asian-Southern fusion will get the weekend started with something surprising. Good intro to what Charleston's food scene does differently.</div>
+            <span class="tl-cost fam-cost">~$70 · Spring St.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block">
+        <div class="day-header fam-day-header">
+          <div class="day-num">SAT</div>
+          <div><div class="day-title">Saturday — History, Culture & Oysters</div><div class="day-sub">Park near Marion Square. Walk everywhere. This is the full Charleston day.</div></div>
+        </div>
+        <div class="timeline fam-timeline">
+          <div class="tl-item">
+            <div class="tl-time">8:30 AM</div>
+            <div class="tl-name">☕ Callie's Hot Little Biscuit</div>
+            <div class="tl-note">First stop. Biscuits before everything. Get the pimento cheese biscuit and walk King Street after to shake off the morning.</div>
+            <span class="tl-cost fam-cost">~$35 · King Street</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">10:00 AM</div>
+            <div class="tl-name">⚓ Fort Sumter National Monument</div>
+            <div class="tl-note">Ferry departs from Liberty Square. Book ahead. The boat ride alone is worth it — kids stay locked in. This is a cinematic story with a real set.</div>
+            <span class="tl-cost fam-cost">~$101 · Pre-book ferry tickets</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:30 PM</div>
+            <div class="tl-name">🌊 Waterfront Park Breather</div>
+            <div class="tl-note">Kids run the pineapple fountain splash. Adults sit on the harbor swings. Let everyone decompress before the next stop.</div>
+            <span class="tl-cost fam-cost">Free</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">1:30 PM</div>
+            <div class="tl-name">🏺 International African American Museum</div>
+            <div class="tl-note">Built on the actual wharf where enslaved Africans arrived. Timed entry — book ahead. One of the most important new museums in America. Don't rush this one.</div>
+            <span class="tl-cost fam-cost">~$68 · 180 Gadsden St.</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">3:30 PM</div>
+            <div class="tl-name">🛍️ Charleston City Market</div>
+            <div class="tl-note">Walk through, watch the sweetgrass basket weavers, let the kids browse. Culture in real time — not a museum exhibit.</div>
+            <span class="tl-cost fam-cost">Free entry · Budget for a basket</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">6:30 PM</div>
+            <div class="tl-name">🍗 Dinner · Leon's Oyster Shop</div>
+            <div class="tl-note">Family dinner. Loud, fun, world-class fried chicken. Oysters for the adults. The kids won't care — they'll have the best chicken of their lives and that'll be enough.</div>
+            <span class="tl-cost fam-cost">~$100 · Upper King Street</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block">
+        <div class="day-header fam-day-header">
+          <div class="day-num">SUN</div>
+          <div><div class="day-title">Sunday — Gardens, Gators & The Send-Off</div><div class="day-sub">One big activity. One legendary dinner. Leave nothing on the table.</div></div>
+        </div>
+        <div class="timeline fam-timeline">
+          <div class="tl-item">
+            <div class="tl-time">9:00 AM</div>
+            <div class="tl-name">🌿 Magnolia Plantation & Gardens</div>
+            <div class="tl-note">Morning light in those gardens is cinematic. Add the Wildlife Tram — kids will see alligators in their natural habitat, which is cooler than anything in a zoo.</div>
+            <span class="tl-cost fam-cost">~$80 · Route 61, 20 min from downtown</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00 PM</div>
+            <div class="tl-name">🦞 Lunch · 167 Raw</div>
+            <div class="tl-note">Midday treat. Get the lobster roll. Yes it's worth the price. Get two.</div>
+            <span class="tl-cost fam-cost">~$90 · East Bay Street</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">2:00 PM</div>
+            <div class="tl-name">🐠 SC Aquarium (Optional)</div>
+            <div class="tl-note">If the kids still have energy — this is the call. Touch tanks, Great Ocean Tank, harbor views. Skip it if everyone's spent.</div>
+            <span class="tl-cost fam-cost">~$124 if yes · Aquarium Wharf</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">7:00 PM</div>
+            <div class="tl-name">🏛️ The Send-Off Dinner · Husk</div>
+            <div class="tl-note">The closer. Order the daily special. Order what the server recommends. This is the meal that makes you book the return trip.</div>
+            <span class="tl-cost fam-cost">~$130 · 76 Queen Street</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="budget-box fam-budget">
+        <div><div class="b-label">Friday</div><div class="b-amount">~$70</div></div>
+        <div><div class="b-label">Sat Food</div><div class="b-amount">~$135</div></div>
+        <div><div class="b-label">Sat Activities</div><div class="b-amount">~$204</div></div>
+        <div><div class="b-label">Sun Food</div><div class="b-amount">~$220</div></div>
+        <div><div class="b-label">Sun Activities</div><div class="b-amount">~$80–200</div></div>
+        <div><div class="b-label">Parking + Misc</div><div class="b-amount">~$40</div></div>
+        <div class="budget-total"><div class="b-label">Full Weekend · Family of 5 · Excl. Lodging</div><div class="b-amount">$700–900</div><div class="b-sub">Worth every dollar</div></div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="fam-tab-panel tab-panel">
+      <p class="section-label">The Real Ones Playbook</p>
+      <div class="tips-grid">
+        <div class="tip-card fam-tip"><span class="tip-icon">🅿️</span><div class="tip-title">Park Once. Walk Everything.</div><div class="tip-body">Park near Marion Square or the Visitor Center garage and walk the historic district. Moving the car in Charleston is a punishment. The whole downtown is walkable if you wear the right shoes.</div></div>
+        <div class="tip-card fam-tip"><span class="tip-icon">📱</span><div class="tip-title">Book Three Things Before You Go</div><div class="tip-body">Fort Sumter ferry, IAAM timed entry, and Husk reservations fill up fast on weekends. Book before you leave Miami — Charleston rewards the prepared.</div></div>
+        <div class="tip-card fam-tip"><span class="tip-icon">🌊</span><div class="tip-title">Folly Beach If Weather Allows</div><div class="tip-body">20 minutes out. Free, low-key, and a genuine break from the city. South Carolina sun in March can still be real — pack sunscreen.</div></div>
+        <div class="tip-card fam-tip"><span class="tip-icon">👻</span><div class="tip-title">Evening Ghost Tour</div><div class="tip-body">$20–25/person. Kids love it. Charleston's haunted history is genuinely compelling. Book through Tour Charleston or Bulldog Tours. Good for Friday night if y'all arrive early enough.</div></div>
+        <div class="tip-card fam-tip"><span class="tip-icon">🌅</span><div class="tip-title">The Battery at Sunset</div><div class="tip-body">Walk the Battery — the historic promenade at the southern tip of the peninsula — in late afternoon. Harbor view as the sun drops. Free. Spectacular. Non-negotiable.</div></div>
+        <div class="tip-card fam-tip"><span class="tip-icon">📸</span><div class="tip-title">Rainbow Row Is a Photo Stop</div><div class="tip-body">15-minute stop, not a destination. Get the shot. Move on to something that actually matters. You're in good hands.</div></div>
+      </div>
+      <div class="warning-card fam-warning">
+        <span class="w-icon">🛑</span>
+        <div>
+          <div class="w-title">Hard Skip List</div>
+          <div class="w-body">Any seafood buffet on the tourist strip. Bubba Gump Shrimp. Chain restaurants of any kind. Overpriced carriage tours that rush you through everything. If the restaurant has a giant photo menu outside — walk right past it. Charleston is too good for that and so are y'all.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- end part 1 -->
+
+
+<!-- ════════════════════════════════════════════════════
+     PART 2 — COUPLES TRIP
+════════════════════════════════════════════════════ -->
+<div id="part-couples" class="part-panel">
+
+  <div class="couples-header">
+    <div class="couples-part-label">Part II · Couples Trip · No Kids Required</div>
+    <h1>The Version of Charleston<br><em>That Needs a Babysitter</em></h1>
+    <p style="font-size:13px; color:rgba(246,239,226,0.55); margin-top:14px; letter-spacing:2px; text-transform:uppercase; position:relative;">Boone Hall · Cypress Garden · Elevated Everything</p>
+  </div>
+  <div class="couples-intro-strip">
+    <p>"There are things you want to do that the kids won't care about. This is that trip. Slower. Deeper. The version of Charleston that rewards patience and a good dinner reservation."</p>
+  </div>
+
+  <div style="background:white; position:sticky; top:57px; z-index:99;">
+    <div class="tabs couples-tabs">
+      <button class="tab-btn active" onclick="switchTab(this,'couples')" style="">🍽️ Food</button>
+      <button class="tab-btn" onclick="switchTab(this,'couples')" style="">🗺️ Experiences</button>
+      <button class="tab-btn" onclick="switchTab(this,'couples')" style="">📅 Itinerary</button>
+      <button class="tab-btn" onclick="switchTab(this,'couples')" style="">✦ Tips</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- FOOD -->
+    <div class="couples-tab-panel tab-panel active">
+      <p class="section-label" style="color:var(--rust);">Dining for Two — No Kids Menu, No Compromises</p>
+      <div class="card-grid">
+
+        <div class="card couples-card navy-accent">
+          <div class="card-header">
+            <div class="card-name">The Ordinary</div>
+            <span class="card-tag tag-couples">Grand Opening Night</span>
+          </div>
+          <div class="card-desc">A converted 1920s bank turned into the most spectacular seafood hall in the Southeast. <strong>Soaring ceilings, grand bar, impeccable oyster program.</strong> The Shellfish Tower is the flex — do it. The space alone sets the tone for the whole trip.</div>
+          <div class="couple-note">This is your arrival dinner. Walk in, look up at those ceilings, order the tower, and let Charleston remind you why you came back without the kids.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$120–180</div><div class="price-sub">$50–70pp + shellfish tower</div></div>
+            <div class="must-order">Must Order: <span>Shellfish Tower, Clam Chowder, Daily Whole Fish</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card navy-accent">
+          <div class="card-header">
+            <div class="card-name">FIG</div>
+            <span class="card-tag tag-romance">The Romantic Dinner</span>
+          </div>
+          <div class="card-desc">Food Is Good — and that's not a tagline, that's a promise kept nightly. <strong>James Beard Award-winning farm-to-table that set the standard</strong> for Charleston's food scene before Charleston's food scene was what it is now. Intimate, refined, unhurried. This is the dinner where you actually talk.</div>
+          <div class="couple-note">Make this reservation before you make your hotel reservation. Serious. This place books out fast and you will regret missing it.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$120–160</div><div class="price-sub">$50–70pp</div></div>
+            <div class="must-order">Must Order: <span>Chef's tasting / whatever's seasonal</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Husk</div>
+            <span class="card-tag tag-must">Elevated Lunch</span>
+          </div>
+          <div class="card-desc">You had this with the family for dinner — <strong>have it at lunch this time</strong>, when the cheeseburger is on the menu and the pace is different. Sit at the bar. Order the seasonal special. Let it be a two-hour lunch. You have nowhere to be.</div>
+          <div class="couple-note">The Husk cheeseburger is lunch-only and it is quietly one of the best burgers in the South. Don't miss it this time around.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$60–90</div><div class="price-sub">$30–45pp</div></div>
+            <div class="must-order">Must Order: <span>The Cheeseburger (lunch only), Seasonal Veg</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Chubby Fish</div>
+            <span class="card-tag tag-couples">Local Favorite</span>
+          </div>
+          <div class="card-desc">The neighborhood spot that locals are fiercely protective of. <strong>Intimate, seafood-forward, creative without trying too hard.</strong> The kind of dinner where you lean across the table to taste each other's plates. No kids menu. No rush. Just good fish and good company.</div>
+          <div class="couple-note">Small space, big reputation. Make a reservation. Order the oysters and whatever the catch is that night. Let the kitchen show off.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$80–120</div><div class="price-sub">$40–60pp</div></div>
+            <div class="must-order">Must Order: <span>Oysters, Daily Fish, Seasonal Small Plates</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Minero</div>
+            <span class="card-tag tag-couples">Casual Night</span>
+          </div>
+          <div class="card-desc">Sean Brock's Mexican-Southern taqueria. <strong>Exceptional tacos, strong mezcal program, and the kind of atmosphere</strong> where you close out the night without realizing it. Great for a casual evening when you want good food without a reservation or a dress code.</div>
+          <div class="couple-note">Order mezcal. Order the tacos. Stay longer than you planned. That's the correct way to do Minero.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$50–70</div><div class="price-sub">$25–35pp</div></div>
+            <div class="must-order">Must Order: <span>Carnitas Taco, Queso Fundido, Mezcal anything</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="budget-box couple-budget">
+        <div><div class="b-label">Arrival Dinner</div><div class="b-amount">~$150</div><div class="b-sub">The Ordinary</div></div>
+        <div><div class="b-label">Date Lunch</div><div class="b-amount">~$75</div><div class="b-sub">Husk</div></div>
+        <div><div class="b-label">Romantic Dinner</div><div class="b-amount">~$140</div><div class="b-sub">FIG</div></div>
+        <div><div class="b-label">Casual Night</div><div class="b-amount">~$60</div><div class="b-sub">Minero</div></div>
+        <div><div class="b-label">Extras</div><div class="b-amount">~$50</div><div class="b-sub">Drinks / snacks</div></div>
+        <div class="budget-total"><div class="b-label">Total Food Weekend · Two Adults</div><div class="b-amount">$400–550</div><div class="b-sub">The grown & sexy budget</div></div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCES -->
+    <div class="couples-tab-panel tab-panel">
+      <p class="section-label" style="color:var(--rust);">What You Came Back For — No Kids, No Rush</p>
+      <div class="card-grid">
+
+        <div class="card couples-card navy-accent">
+          <div class="card-header">
+            <div class="card-name">Boone Hall Plantation</div>
+            <span class="card-tag tag-history">The One You Waited For</span>
+          </div>
+          <div class="card-desc">The Avenue of Oaks entrance is one of the most photographed in the country — <strong>900 feet of ancient live oaks forming a cathedral of Spanish moss.</strong> But Boone Hall is also one of the most honest plantation museums in the South, with preserved slave cabins that tell the full story. This is what you wanted to see. Now you can actually see it.</div>
+          <div class="couple-note">The Gullah culture demonstrations here are exceptional — living history performed by descendants of the people who built this place. Don't rush through. Give it a full morning.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">~$50</div><div class="price-sub">~$25/person</div></div>
+            <div class="must-order">Best for: <span>Half day · Morning · Allow 2.5–3 hrs</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card navy-accent">
+          <div class="card-header">
+            <div class="card-name">Cypress Gardens</div>
+            <span class="card-tag tag-romance">The Swamp Boat</span>
+          </div>
+          <div class="card-desc">This is the one you knew the kids would've jumped out of the boat for. <strong>A blackwater swamp with ancient cypress trees, blooming wildflowers, and alligators gliding beneath the surface.</strong> Rent a flat-bottomed boat and row through it yourselves — no guide, no schedule, no children asking to leave.</div>
+          <div class="couple-note">This is genuinely one of the most otherworldly natural experiences in the Southeast. Go slow. Bring a camera. This is not a tourist attraction — this is a place.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">~$36</div><div class="price-sub">~$12/person + boat rental ~$12</div></div>
+            <div class="must-order">Best for: <span>2 hrs · Spring blooms peak March–April · Go slow</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Int'l African American Museum</div>
+            <span class="card-tag tag-culture">See It Again — Differently</span>
+          </div>
+          <div class="card-desc">You may have gone with the family. <strong>Go again without them.</strong> Two adults, no timeline, no one asking to leave. The genealogy research center on-site is extraordinary — you can trace family histories through the African diaspora. This visit hits completely differently without managing three kids.</div>
+          <div class="couple-note">Book a slot at the Center for Family History while you're there. The work they do connecting families to their ancestry across the slave trade is unlike anything else in the country.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">~$36</div><div class="price-sub">~$18/person</div></div>
+            <div class="must-order">Best for: <span>Half day · Book genealogy center in advance</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Middleton Place</div>
+            <span class="card-tag tag-romance">Gardens + History</span>
+          </div>
+          <div class="card-desc">America's oldest landscaped gardens, designed in 1741. <strong>Terraced lawns, geometric reflecting pools, ancient live oaks, and the Middleton Place House Museum</strong> — a complicated, layered story told with unusual honesty. More intimate than Magnolia, more historically rich than Boone Hall.</div>
+          <div class="couple-note">Have lunch at the Inn at Middleton Place restaurant after the tour. The setting alone — looking over the Ashley River — is worth the reservation.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">~$54</div><div class="price-sub">~$27/person · House tour extra</div></div>
+            <div class="must-order">Best for: <span>Half day · Historic gardens · Peaceful + uncrowded</span></div>
+          </div>
+        </div>
+
+        <div class="card couples-card">
+          <div class="card-header">
+            <div class="card-name">Rooftop Drinks at Vendue</div>
+            <span class="card-tag tag-romance">Golden Hour Essential</span>
+          </div>
+          <div class="card-desc">The Rooftop at the Vendue has <strong>360-degree views of the Charleston Harbor and rooftops</strong> — best at golden hour. No agenda. Good cocktails. Watch the light change over the water. This is the version of Charleston that doesn't need to be justified or explained.</div>
+          <div class="couple-note">Go for the 6–7pm window. Order something with bourbon. Watch the harbor. This is the exhale after everything else.</div>
+          <div class="card-footer">
+            <div><div class="price-label">Two Adults</div><div class="price-amount">$30–50</div><div class="price-sub">Cocktails + apps</div></div>
+            <div class="must-order">Best for: <span>Golden hour · No reservation needed · Stay for sunset</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ITINERARY -->
+    <div class="couples-tab-panel tab-panel">
+      <p class="section-label" style="color:var(--rust);">Suggested Flow — Two Days, No Schedule Stress</p>
+
+      <div class="day-block">
+        <div class="day-header couple-day-header">
+          <div class="day-num">01</div>
+          <div><div class="day-title">Day One — Arrival, Grandeur & History</div><div class="day-sub">The slower version of the city. Let Charleston show off.</div></div>
+        </div>
+        <div class="timeline couple-timeline">
+          <div class="tl-item">
+            <div class="tl-time">Morning</div>
+            <div class="tl-name">🌿 Boone Hall Plantation</div>
+            <div class="tl-note">Full morning. Avenue of Oaks, slave cabin museum, Gullah demonstrations. Give it the time it deserves. This is what you came back for.</div>
+            <span class="tl-cost couple-cost">~$50 · Route 17, Mount Pleasant</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">Lunch</div>
+            <div class="tl-name">🍔 Husk — Two-Hour Lunch</div>
+            <div class="tl-note">Cheeseburger is on the menu. Sit at the bar. Order the seasonal special. You have nowhere to be. Take two hours.</div>
+            <span class="tl-cost couple-cost">~$75 · 76 Queen Street</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">Afternoon</div>
+            <div class="tl-name">🏺 IAAM — Round Two</div>
+            <div class="tl-note">If you went with the family, go again. Completely different experience with no timeline. Visit the genealogy center if you didn't get to it before.</div>
+            <span class="tl-cost couple-cost">~$36 · 180 Gadsden Street</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">6:00 PM</div>
+            <div class="tl-name">🥂 Rooftop Drinks at Vendue</div>
+            <div class="tl-note">Golden hour, harbor view, good cocktails. The exhale before dinner.</div>
+            <span class="tl-cost couple-cost">~$40 · 19 Vendue Range</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">8:00 PM</div>
+            <div class="tl-name">🐚 Dinner · The Ordinary</div>
+            <div class="tl-note">The arrival dinner. Shellfish tower. Soaring ceilings. Let Charleston welcome you back properly.</div>
+            <span class="tl-cost couple-cost">~$150 · 544 King Street</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-block">
+        <div class="day-header couple-day-header">
+          <div class="day-num">02</div>
+          <div><div class="day-title">Day Two — The Swamp, The Gardens & The Dinner</div><div class="day-sub">The day that requires no justification to anyone.</div></div>
+        </div>
+        <div class="timeline couple-timeline">
+          <div class="tl-item">
+            <div class="tl-time">9:00 AM</div>
+            <div class="tl-name">🛶 Cypress Gardens</div>
+            <div class="tl-note">Rent a flat-bottomed boat. Row through blackwater cypress swamp. Alligators. Spanish moss. Wildflowers. This is the one the kids would've made impossible. Now it's yours.</div>
+            <span class="tl-cost couple-cost">~$36 · 3030 Cypress Gardens Rd</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:30 PM</div>
+            <div class="tl-name">🌸 Middleton Place + Lunch at the Inn</div>
+            <div class="tl-note">America's oldest landscaped gardens, then lunch at the Inn at Middleton Place with views over the Ashley River. The ideal midday pace.</div>
+            <span class="tl-cost couple-cost">~$54 admission + ~$70 lunch</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">Afternoon</div>
+            <div class="tl-name">🛁 Check In · Rest · Walk the Battery</div>
+            <div class="tl-note">Decompress. Walk the Battery at sunset. Sit on the promenade. Let the harbor do what it does. No plans — just the city.</div>
+            <span class="tl-cost couple-cost">Free</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">7:30 PM</div>
+            <div class="tl-name">🕯️ The Dinner · FIG</div>
+            <div class="tl-note">The romantic send-off. Book this before anything else on the trip. Seasonal tasting. Unhurried. This is the dinner you talk about for months.</div>
+            <span class="tl-cost couple-cost">~$140 · 232 Meeting Street</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="budget-box couple-budget">
+        <div><div class="b-label">Day 1 Activities</div><div class="b-amount">~$86</div></div>
+        <div><div class="b-label">Day 1 Food</div><div class="b-amount">~$265</div></div>
+        <div><div class="b-label">Day 2 Activities</div><div class="b-amount">~$90</div></div>
+        <div><div class="b-label">Day 2 Food</div><div class="b-amount">~$210</div></div>
+        <div><div class="b-label">Misc / Transport</div><div class="b-amount">~$50</div></div>
+        <div class="budget-total"><div class="b-label">Full Couples Weekend · Two Adults · Excl. Hotel</div><div class="b-amount">$650–800</div><div class="b-sub">The babysitter was worth it</div></div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="couples-tab-panel tab-panel">
+      <p class="section-label" style="color:var(--rust);">Making the Most of It</p>
+      <div class="tips-grid">
+        <div class="tip-card couple-tip"><span class="tip-icon">📅</span><div class="tip-title">Book FIG First</div><div class="tip-body">Seriously. Before the hotel, before the flights are confirmed. FIG reservations go fast on weekends and you will be disappointed if you wait. Go to their website directly.</div></div>
+        <div class="tip-card couple-tip"><span class="tip-icon">🛶</span><div class="tip-title">Cypress in the Morning</div><div class="tip-body">The swamp at Cypress Gardens is most magical in early morning light. Mist on the water, birds active, fewer visitors. Go early and go slow — that's the whole experience.</div></div>
+        <div class="tip-card couple-tip"><span class="tip-icon">🏨</span><div class="tip-title">Stay in the French Quarter</div><div class="tip-body">The French Quarter neighborhood is Charleston's most atmospheric. Stay somewhere historic — the Dewberry or Zero George if budget allows. Waking up in that neighborhood sets the whole tone.</div></div>
+        <div class="tip-card couple-tip"><span class="tip-icon">🌿</span><div class="tip-title">March is Peak Season</div><div class="tip-body">Spring in the Low Country is genuinely glorious — azaleas, dogwoods, mild temps. This is Charleston at its most beautiful. Book lodging early and lean into the gardens.</div></div>
+        <div class="tip-card couple-tip"><span class="tip-icon">🎵</span><div class="tip-title">Live Music on Upper King</div><div class="tip-body">Upper King Street has great late-night energy. Prohibition is a speakeasy-style bar with live jazz most nights. Perfect nightcap after FIG.</div></div>
+        <div class="tip-card couple-tip"><span class="tip-icon">🚤</span><div class="tip-title">Harbor Sunset Cruise</div><div class="tip-body">Several operators run 90-minute sunset cruises on the harbor for ~$35–45pp. Book it for your first evening if you want something romantic before dinner at The Ordinary.</div></div>
+      </div>
+      <div class="warning-card couple-warning">
+        <span class="w-icon">✦</span>
+        <div>
+          <div class="w-title">The Whole Point</div>
+          <div class="w-body">This trip isn't about doing more than the family trip — it's about doing it differently. Slower meals. Longer mornings. The places that reward patience. You've earned a version of Charleston with no itinerary pressure. Build in time to do nothing. That's not wasted time — that's the actual trip.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- end part 2 -->
+
+<footer>
+  <p>Curated by <strong>@AiméDelgrès</strong> · <em>"The #1 City in the #1 State. You're welcome."</em> 🤙🏾</p>
+</footer>
+
+<script>
+  function switchPart(part) {
+    document.querySelectorAll('.part-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.part-btn').forEach(b => b.classList.remove('active-part'));
+    document.getElementById('part-' + part).classList.add('active');
+    document.getElementById('btn-' + part).classList.add('active-part');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchTab(btn, group) {
+    const part = btn.closest('.part-panel');
+    const panels = part.querySelectorAll('.' + group + '-tab-panel');
+    const buttons = btn.closest('.tabs').querySelectorAll('.tab-btn');
+    panels.forEach(p => p.classList.remove('active'));
+    buttons.forEach(b => { b.classList.remove('active'); });
+    const idx = Array.from(buttons).indexOf(btn);
+    panels[idx].classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
