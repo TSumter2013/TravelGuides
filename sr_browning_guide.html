@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.R. Browning & Co. | Community Development Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8600A;
+    --orange-light: #F07830;
+    --charcoal: #2A2A2A;
+    --slate: #3D4A5C;
+    --slate-light: #5A6A7E;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE2;
+    --white: #FFFFFF;
+    --green: #2D6A4F;
+    --green-light: #3D8B68;
+    --red: #C0392B;
+    --yellow: #D4A017;
+    --border: rgba(42,42,42,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.12;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: var(--slate);
+    opacity: 0.3;
+  }
+
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 96px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span {
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    margin: 20px 0 32px;
+    max-width: 560px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .hero-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ── NAV STRIP ── */
+  .nav-strip {
+    background: var(--orange);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 14px 18px;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  .nav-link:hover {
+    color: white;
+    background: rgba(0,0,0,0.1);
+    border-bottom-color: white;
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    line-height: 1;
+    color: var(--cream-dark);
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .section-header {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1;
+    color: var(--charcoal);
+    letter-spacing: 0.5px;
+  }
+
+  h2 span { color: var(--orange); }
+
+  h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #444;
+    margin-bottom: 16px;
+    font-size: 15.5px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: var(--charcoal);
+    color: white;
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--orange);
+  }
+
+  .callout p {
+    color: rgba(255,255,255,0.85);
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout.orange {
+    background: var(--orange);
+  }
+
+  .callout.orange p {
+    color: white;
+  }
+
+  .callout.orange::before {
+    background: rgba(0,0,0,0.2);
+  }
+
+  /* ── PHASE CARDS ── */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .phase-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .phase-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  .phase-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+
+  .phase-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .phase-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--cream-dark);
+    margin-bottom: 8px;
+  }
+
+  .phase-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .phase-time {
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .phase-desc {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  /* ── STEP BLOCKS ── */
+  .step-block {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--orange);
+    min-width: 44px;
+    padding-top: 2px;
+  }
+
+  .step-content { flex: 1; }
+
+  /* ── ORGS TABLE ── */
+  .org-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .org-table thead tr {
+    background: var(--charcoal);
+    color: white;
+  }
+
+  .org-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .org-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .org-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.02);
+  }
+
+  .org-table tr:hover td {
+    background: rgba(232,96,10,0.04);
+  }
+
+  .org-name {
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  /* ── CONVO CARDS ── */
+  .convo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .convo-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .convo-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .convo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .convo-label {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--charcoal);
+  }
+
+  .convo-count {
+    font-size: 12px;
+    color: var(--slate-light);
+  }
+
+  .convo-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .convo-card ul li {
+    font-size: 13.5px;
+    color: #444;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .convo-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 11px;
+    top: 7px;
+  }
+
+  /* ── PIVOT CARDS ── */
+  .pivot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 28px 0;
+  }
+
+  .pivot-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: start;
+    transition: box-shadow 0.2s;
+  }
+
+  .pivot-card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+
+  .pivot-left {
+    text-align: center;
+  }
+
+  .pivot-emoji {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .pivot-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: block;
+    line-height: 1.4;
+  }
+
+  .pivot-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+  }
+
+  .pivot-gap {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 6px;
+  }
+
+  .gap-label {
+    display: inline-block;
+    background: var(--cream-dark);
+    color: var(--charcoal);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  .pivot-card p {
+    font-size: 14.5px;
+    margin-bottom: 12px;
+  }
+
+  .pivot-practice {
+    background: var(--cream-dark);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-top: 12px;
+  }
+
+  .pivot-practice-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+
+  .pivot-practice ul {
+    padding-left: 16px;
+    margin: 0;
+  }
+
+  .pivot-practice ul li {
+    font-size: 13.5px;
+    color: #444;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  /* ── TIMELINE TABLE ── */
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 14px;
+  }
+
+  .timeline-table thead tr {
+    background: var(--charcoal);
+    color: white;
+  }
+
+  .timeline-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .timeline-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .timeline-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.02);
+  }
+
+  .phase-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── LEGAL BLOCKS ── */
+  .legal-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .legal-option {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 22px;
+  }
+
+  .legal-option-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+
+  .legal-option h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .legal-option p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  .cost-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  /* ── BUDGET TABLE ── */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .budget-table th {
+    background: var(--slate);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .budget-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #333;
+  }
+
+  .budget-table tfoot td {
+    font-weight: 700;
+    background: var(--cream-dark);
+    border-top: 2px solid var(--charcoal);
+    color: var(--charcoal);
+  }
+
+  /* ── GRANT TABLE ── */
+  .grant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .grant-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+  }
+
+  .grant-card-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .grant-card-focus {
+    font-size: 12px;
+    color: var(--slate-light);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .grant-card-type {
+    display: inline-block;
+    background: var(--cream-dark);
+    color: var(--charcoal);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14.5px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── KEY REMINDER ── */
+  .key-reminder {
+    background: var(--charcoal);
+    color: white;
+    padding: 48px 40px;
+    text-align: center;
+    margin: 48px 0 0;
+  }
+
+  .key-reminder h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    color: white;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .key-reminder h2 span {
+    color: var(--orange);
+  }
+
+  .key-reminder p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 21px);
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 12px;
+  }
+
+  /* ── OFFICIALS ── */
+  .officials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .official-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+  }
+
+  .official-role {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .official-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .official-district {
+    font-size: 12px;
+    color: var(--slate-light);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .divider span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    white-space: nowrap;
+  }
+
+  /* ── WHITE SPACE TABLE ── */
+  .whitespace-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .whitespace-table thead tr {
+    background: var(--orange);
+    color: white;
+  }
+
+  .whitespace-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .whitespace-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #333;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .whitespace-table tr:nth-child(even) td {
+    background: rgba(0,0,0,0.02);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.5);
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer strong {
+    color: white;
+    font-size: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 24px 48px; }
+    .wrapper { padding: 0 24px; }
+    .nav-strip { padding: 0 16px; }
+    .pivot-card { grid-template-columns: 1fr; }
+    .pivot-left { text-align: left; display: flex; align-items: center; gap: 12px; }
+    .key-reminder { padding: 40px 24px; }
+    .hero-meta { gap: 20px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">S.R. Browning & Co. — Est. 2026</div>
+    <h1>LEAD.<br><span>EXPAND.</span><br>IMPACT.</h1>
+    <p class="hero-sub">A full community development playbook for Mill Creek West, Philadelphia</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Territory</span>
+        <span class="hero-meta-value">Mill Creek West, West Philadelphia</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Structure</span>
+        <span class="hero-meta-value">501(c)(3) Nonprofit</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Phases</span>
+        <span class="hero-meta-value">6 Phases · 24+ Months</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <a class="nav-link" href="#vision">Vision</a>
+    <a class="nav-link" href="#landscape">Landscape</a>
+    <a class="nav-link" href="#phase1">Phase 1</a>
+    <a class="nav-link" href="#phase2">Phase 2</a>
+    <a class="nav-link" href="#phase3">Phase 3</a>
+    <a class="nav-link" href="#phase4">Phase 4</a>
+    <a class="nav-link" href="#phase5">Phase 5</a>
+    <a class="nav-link" href="#phase6">Phase 6</a>
+    <a class="nav-link" href="#pivots">Pivots</a>
+    <a class="nav-link" href="#timeline">Timeline</a>
+  </div>
+</nav>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">The Foundation</div>
+      <h2>What <span>S.R. Browning</span> Is Building</h2>
+    </div>
+
+    <p>S.R. Browning & Co. is not a social services organization. It is a <strong>community experience organization</strong> — one that generates economic activity, cultural pride, and neighborhood identity, then redirects a portion of that back into the community it serves.</p>
+
+    <p>The model is simple and powerful. Revenue flows in through events, entertainment, and services. 90% sustains operations and growth. 10% flows automatically into the Community Fund — financing street maintenance, educational programs, toy drives, and other neighborhood needs.</p>
+
+    <div class="callout orange">
+      <p>"We don't just serve the neighborhood. We become the community."</p>
+    </div>
+
+    <h3>The Three Pillars</h3>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">01</div>
+        <div class="phase-title">Socially</div>
+        <div class="phase-desc">Building genuine connection among residents — not programming for its own sake, but the kind of shared experience that turns neighbors into community.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">02</div>
+        <div class="phase-title">Academically</div>
+        <div class="phase-desc">Providing educational enrichment for youth and adults — tutoring, trips, workshops, and a Youth Committee that puts young people in real decision-making seats.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">03</div>
+        <div class="phase-title">Professionally</div>
+        <div class="phase-desc">Enhancing career opportunities through resume workshops, career counseling, and eventually a teen entrepreneurship track built for the neighborhood, by the neighborhood.</div>
+      </div>
+    </div>
+
+    <h3>The 10% Commitment</h3>
+    <p>Every dollar S.R. Browning generates from events, trips, and services is split: 90% covers operations and growth, while 10% is automatically diverted to the Community Fund. The Fund finances:</p>
+    <ul style="padding-left: 24px; margin-bottom: 16px; color: #444; font-size: 15px; line-height: 2;">
+      <li><strong>Food Security</strong> — Holiday Turkey Drive & Weekly Pantry</li>
+      <li><strong>Family Support</strong> — Toy Drives, Raffles, and Giveaways</li>
+      <li><strong>Health & Wellness</strong> — Fitness Programs and Active Community Days</li>
+      <li><strong>Education</strong> — Educational trips & School Partnerships</li>
+      <li><strong>Street Maintenance</strong> — Painting, Snow Removal, Landscaping</li>
+    </ul>
+
+    <div class="callout">
+      <p>This is not charity. This is a self-sustaining social enterprise where every consumer purchase serves a dual purpose: enjoyment and philanthropy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LANDSCAPE -->
+<section id="landscape">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Know Your Ground</div>
+      <h2>The Mill Creek West <span>Landscape</span></h2>
+    </div>
+
+    <p>Before a single event is planned, a single flyer is printed, or a single conversation is had about programming — Stan needs to understand what he's walking into. Mill Creek West is not a blank canvas.</p>
+
+    <h3>The History You Must Respect</h3>
+    <p>Mill Creek has a documented history of infrastructure neglect. The original creek was buried in the late 19th century; the resulting sewer system collapsed in 1961, condemning over 100 homes. From the 1930s onward, redlining denied residents access to capital. Urban renewal projects in the 1950s and 60s destroyed the fabric of a neighborhood that was already losing population and investment. Residents here have been promised things before. They've watched organizations show up with plans and disappear.</p>
+
+    <p><strong>The current vacancy rate in Mill Creek is 23.3%</strong> — higher than 90.4% of all U.S. neighborhoods. That blight is visible, felt, and speaks directly to the street maintenance pillar of the CDP.</p>
+
+    <div class="callout">
+      <p>The entire Phase 1 posture has to communicate: I'm here to listen first, and I'm not going anywhere.</p>
+    </div>
+
+    <h3>Active City Investment Right Now</h3>
+    <p>The City of Philadelphia is actively moving in this neighborhood. Rebuild Philadelphia recently broke ground on a <strong>$4.5 million renovation of the West Mill Creek Playground and Plaza at 51st and Parrish</strong>, backed by a $600,000 state grant and $500,000 from Councilmember Jamie Gauthier. This is momentum Stan can eventually align with — but only after he has established credibility on the ground.</p>
+
+    <h3>Elected Officials — Know the Names</h3>
+    <div class="officials-grid">
+      <div class="official-card">
+        <div class="official-role">City Council</div>
+        <div class="official-name">Jamie Gauthier</div>
+        <div class="official-district">3rd District — actively funding West Mill Creek</div>
+      </div>
+      <div class="official-card">
+        <div class="official-role">State House</div>
+        <div class="official-name">Rick Krajewski</div>
+        <div class="official-district">District 188</div>
+      </div>
+      <div class="official-card">
+        <div class="official-role">State House</div>
+        <div class="official-name">Amen Brown</div>
+        <div class="official-district">District 190</div>
+      </div>
+      <div class="official-card">
+        <div class="official-role">State House</div>
+        <div class="official-name">Joanna McClinton</div>
+        <div class="official-district">District 191</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color: var(--slate-light);"><em>Stan does not contact any elected officials in Phase 1. He learns their names, tracks their priorities, and earns that introduction later.</em></p>
+
+    <h3>Who Is Already in the Room</h3>
+    <p>These are the organizations operating in Stan's territory. He is <strong>not competing</strong> with them. He is learning from them, positioning around them, and eventually partnering with them.</p>
+
+    <table class="org-table">
+      <thead>
+        <tr>
+          <th>Organization</th>
+          <th>What They Do</th>
+          <th>Stan's Relationship</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="org-name">Mill Creek Community Partnership (MCCP)</span></td>
+          <td>Faith-based 501(c)(3) founded 2004; partners with 70+ community groups; resource clearinghouse; runs Fine Art Through Our Eyes arts initiative and On-the-Go ArtBUS</td>
+          <td>Must meet first. Most important initial relationship.</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">HopePHL</span></td>
+          <td>Housing, family services, early childhood, community development; key partner in the federally-designated West Philadelphia Promise Zone; organizes the Lancaster Avenue Jazz & Arts Festival</td>
+          <td>High credibility; potential collaborator on events</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">CommUnity Garden @ The Creek</span></td>
+          <td>Collaborative multipurpose space using horticulture, education, art, and environmental wellness; intergenerational community focus</td>
+          <td>Potential venue partner; complementary mission</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">West Philadelphia Landscape Project (WPLP)</span></td>
+          <td>Environmental history, vacant land reclamation, school partnerships; relationship with Aspen Farms and community leaders</td>
+          <td>Research resource; potential academic partner</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">Lucien E. Blackwell Community Center</span></td>
+          <td>Gymnasium, community room, programming for all ages</td>
+          <td>Priority venue to secure access</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">Tiffany Fletcher Recreation Center</span></td>
+          <td>Computer lab, playground, basketball courts, outdoor pool</td>
+          <td>Youth programming venue potential</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">West Mill Creek Playground</span></td>
+          <td>Recently renovated; actively seeking youth and adult program ideas (publicly posted)</td>
+          <td>Open door — contact them in Phase 1</td>
+        </tr>
+        <tr>
+          <td><span class="org-name">Lancaster Avenue 21st Century Business Association (LA21)</span></td>
+          <td>Commercial corridor business organizing on Lancaster Ave</td>
+          <td>Future corporate sponsorship pipeline</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PHASE 1 -->
+<section id="phase1">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 1 · Months 1–2</div>
+      <h2>Ground <span>Truth</span></h2>
+    </div>
+
+    <p><strong>No programming. No events. No announcements.</strong> This phase is entirely about listening and learning. Stan's entire job for 60 days is to understand the ground before he breaks it.</p>
+
+    <div class="callout">
+      <p>Do not mention the plan. Do not show the deck. Do not ask anyone to join anything. The CDP stays in the folder for 60 days.</p>
+    </div>
+
+    <h3>Step 1 — Walk the Neighborhood</h3>
+    <p>Stan physically walks Mill Creek West and documents what he sees: active organizations, businesses on the corridor, vacant lots and community spaces that could serve as venues, schools in the catchment area, and visible signs of what residents care about — gardens, murals, community boards.</p>
+
+    <div class="step-block">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h4>The Community Asset Map</h4>
+        <p>After walking the neighborhood, Stan builds a one-page document capturing: physical assets (spaces, venues, corridors), organizational assets (who's active and what lane they occupy), and visible pain points (blight, vacancy, infrastructure gaps). A Google Doc or notepad works fine at this stage. The point is to capture it.</p>
+      </div>
+    </div>
+
+    <h3>Step 2 — Have 20 Conversations</h3>
+    <p>Not surveys. Not sign-up sheets. Actual one-on-one conversations with real people in the neighborhood. Here's exactly who to talk to and what to ask:</p>
+
+    <div class="convo-grid">
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">🏘️</div>
+          <div>
+            <div class="convo-label">Longtime Residents</div>
+            <div class="convo-count">5 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>What's changed in the last 10 years — good and bad?</li>
+          <li>What do families need that nobody's providing?</li>
+          <li>What organizations have tried things here and why did they fail?</li>
+          <li>If you could change one thing about this block, what would it be?</li>
+        </ul>
+      </div>
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">👨‍👩‍👧</div>
+          <div>
+            <div class="convo-label">Parents of School-Age Kids</div>
+            <div class="convo-count">5 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>What do your kids do after school? What do you wish existed?</li>
+          <li>Would you bring your family to a community event if it was free or low cost?</li>
+          <li>What makes you trust an organization in this neighborhood?</li>
+        </ul>
+      </div>
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">🧑‍🎓</div>
+          <div>
+            <div class="convo-label">Young People 14–24</div>
+            <div class="convo-count">4 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>What do you wish existed in this neighborhood for people your age?</li>
+          <li>Do adults here actually listen to young people? Why or why not?</li>
+          <li>Would you join a committee that had real decision-making power?</li>
+        </ul>
+      </div>
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">⛪</div>
+          <div>
+            <div class="convo-label">Faith Leader / Pastor</div>
+            <div class="convo-count">2 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>What does your congregation say they need most right now?</li>
+          <li>Which organizations do you trust in this neighborhood?</li>
+          <li>Would your church host a community gathering or distribution event?</li>
+        </ul>
+      </div>
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">🛒</div>
+          <div>
+            <div class="convo-label">Small Business Owners</div>
+            <div class="convo-count">2 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>How long have you been here? What's your read on how things are changing?</li>
+          <li>Do you ever sponsor community events? What would you need to see first?</li>
+          <li>What do your customers say they wish existed here?</li>
+        </ul>
+      </div>
+      <div class="convo-card">
+        <div class="convo-card-header">
+          <div class="convo-icon">🤝</div>
+          <div>
+            <div class="convo-label">Organization Reps</div>
+            <div class="convo-count">2 conversations</div>
+          </div>
+        </div>
+        <ul>
+          <li>MCCP and HopePHL — email first, request a 20-minute listening session</li>
+          <li>Frame it as: "I'm here to learn, not to pitch"</li>
+          <li>Ask what gaps they see, what they've tried that failed</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Step 3 — Attend One Public Meeting</h3>
+    <p>A city council district meeting, civic association meeting, or community input session. Stan shows up, listens, and introduces himself to exactly one person. He is not pitching. He is learning the room.</p>
+
+    <div class="callout">
+      <p>What gets said again and again across different people is Stan's market signal. That's his programming roadmap.</p>
+    </div>
+
+    <h3>Phase 1 Success Criteria</h3>
+    <p>When Phase 1 is complete, Stan should be able to answer these five questions without hesitation:</p>
+    <ul class="checklist">
+      <li><div class="check-box"></div> What do people in Mill Creek West say they need that isn't being provided?</li>
+      <li><div class="check-box"></div> Which 2–3 organizations are the most trusted in this neighborhood and why?</li>
+      <li><div class="check-box"></div> What lane can S.R. Browning & Co. occupy that doesn't duplicate anyone else?</li>
+      <li><div class="check-box"></div> Where is the most realistic venue for a first event and do I have a contact there?</li>
+      <li><div class="check-box"></div> Who are 5 people in this neighborhood who would show up for something I organized?</li>
+    </ul>
+    <p style="font-size: 13px; color: var(--slate-light); margin-top: 12px;"><em>If Stan can't answer all five — he does more conversations. Phase 2 does not start until these are answered.</em></p>
+  </div>
+</section>
+
+<!-- PHASE 2 -->
+<section id="phase2">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 2 · Months 2–4</div>
+      <h2>Legal <span>Foundation</span></h2>
+    </div>
+
+    <p>This is where the nonprofit conversation becomes a decision, not a discussion. The 10% Community Fund in the CDP is essentially a charitable fund by design. Housing it in a for-profit creates legal ambiguity, donor skepticism, and zero access to grant funding. As a nonprofit, that fund <em>is</em> the mission — and every dollar raised through events is clean, defensible program-related income.</p>
+
+    <h3>The Nonprofit vs. For-Profit Decision</h3>
+    <table class="org-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>For-Profit LLC</th>
+          <th>Nonprofit 501(c)(3)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grant eligibility</td>
+          <td>Essentially none</td>
+          <td>Full access to foundation, federal, and corporate grants</td>
+        </tr>
+        <tr>
+          <td>Donor tax incentives</td>
+          <td>None</td>
+          <td>Donations are tax-deductible — unlocks major donors</td>
+        </tr>
+        <tr>
+          <td>Community trust</td>
+          <td>Skepticism ("who profits?")</td>
+          <td>Higher credibility with residents and partners</td>
+        </tr>
+        <tr>
+          <td>Corporate sponsorship</td>
+          <td>Transactional only</td>
+          <td>Mission-aligned, preferred by CSR budgets</td>
+        </tr>
+        <tr>
+          <td>The 10% model</td>
+          <td>Legally ambiguous</td>
+          <td>Baked into the structure by design</td>
+        </tr>
+        <tr>
+          <td>Sustainability runway</td>
+          <td>Earned revenue only</td>
+          <td>Blended: earned + grants + donations</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>The Filing Path — Three Options</h3>
+    <div class="legal-options">
+      <div class="legal-option">
+        <div class="legal-option-label">Option A</div>
+        <h4>IRS Form 1023-EZ</h4>
+        <p>Simplified 501(c)(3) application for organizations projecting under $50,000 in annual gross receipts in first three years. Stan files directly.</p>
+        <div class="cost-tag">Filing fee: $275</div>
+      </div>
+      <div class="legal-option">
+        <div class="legal-option-label">Option B</div>
+        <h4>Attorney-Assisted Filing</h4>
+        <p>Philadelphia VIP (Volunteers for the Indigent Program) offers free legal services for nonprofits. Best choice for first-timers who want proper guidance. Visit phillyvip.org</p>
+        <div class="cost-tag">Free through Philadelphia VIP</div>
+      </div>
+      <div class="legal-option">
+        <div class="legal-option-label">Option C — Recommended First</div>
+        <h4>Fiscal Sponsorship</h4>
+        <p>Partner with an existing 501(c)(3) as a fiscal sponsor while building toward independent status. Allows tax-deductible donations and some grants immediately without waiting 3–6 months for IRS approval.</p>
+        <div class="cost-tag">Low cost; fastest to activate</div>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <p>Recommended path: Start with Option C (fiscal sponsorship) while simultaneously filing under Option A or B. This keeps momentum going while the legal structure is being built.</p>
+    </div>
+
+    <h3>The Must-Do Checklist for Phase 2</h3>
+    <ul class="checklist">
+      <li><div class="check-box"></div> Register S.R. Browning & Co. as a Pennsylvania LLC — PA Department of State (~$125)</li>
+      <li><div class="check-box"></div> Obtain an EIN (Employer Identification Number) — IRS.gov, free, 10 minutes</li>
+      <li><div class="check-box"></div> Open a dedicated business bank account — no commingling personal and organizational funds, ever</li>
+      <li><div class="check-box"></div> Identify a fiscal sponsor OR submit 501(c)(3) application</li>
+      <li><div class="check-box"></div> Draft Articles of Incorporation and Bylaws (Philadelphia VIP has templates)</li>
+      <li><div class="check-box"></div> Identify at least 3 board members who are not family</li>
+      <li><div class="check-box"></div> File USPTO trademark application for "Lead. Expand. Impact." and S.R. Browning & Co. name (~$250–$350 per class)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PHASE 3 -->
+<section id="phase3">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 3 · Months 4–6</div>
+      <h2>Seed Event — <span>Proof of Concept</span></h2>
+    </div>
+
+    <p>This is the most important phase. Stan needs <strong>one successful event before anything else.</strong> Not a perfect event. A real one, with real people and real lessons. The number doesn't matter. The practice does.</p>
+
+    <h3>The Right First Event</h3>
+    <p>Based on the Mill Creek West context, the best first event is a <strong>Community Movie Night or Outdoor Play — late spring or early summer.</strong> Why:</p>
+    <ul style="padding-left: 24px; margin-bottom: 24px; color: #444; font-size: 15px; line-height: 2;">
+      <li>Low production cost</li>
+      <li>Naturally social — brings families together without pressure</li>
+      <li>Easy to price accessibly ($5–$10 suggested donation)</li>
+      <li>Generates the first real dollars through the 10% model, even symbolically</li>
+      <li>Demonstrates the entertainment model without requiring a full venue contract</li>
+    </ul>
+
+    <h3>Venue Options in Mill Creek West</h3>
+    <ul style="padding-left: 24px; margin-bottom: 24px; color: #444; font-size: 15px; line-height: 2;">
+      <li><strong>West Mill Creek Playground</strong> — actively seeking program partners. Already open.</li>
+      <li><strong>CommUnity Garden @ The Creek</strong> — outdoor space, community-aligned, natural partnership</li>
+      <li><strong>Church parking lot or fellowship hall</strong> — faith community partnership, low cost</li>
+      <li><strong>Philadelphia Parks & Recreation permit</strong> — Cobbs Creek Park; PPR permits ~$50–$150</li>
+    </ul>
+
+    <h3>The Event Budget — Model It First</h3>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Estimated Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Projector rental</td><td>$100–$150</td></tr>
+        <tr><td>Screen or white sheet surface</td><td>$0–$50</td></tr>
+        <tr><td>Folding chairs (rental or borrowed)</td><td>$50–$100</td></tr>
+        <tr><td>Flyers and printing</td><td>$30–$50</td></tr>
+        <tr><td>Venue permit</td><td>$50–$150</td></tr>
+        <tr><td>Miscellaneous / contingency</td><td>$100</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Total Estimated Cost</td><td>$330–$600</td></tr>
+      </tfoot>
+    </table>
+
+    <p><strong>The math:</strong> At $5/person with 100 attendees = $500 revenue → 10% to Community Fund = $50 → 90% to operations = $450. That's tight — but it <em>proves the model</em> in miniature. That's what matters.</p>
+
+    <h3>How to Promote It</h3>
+    <ul style="padding-left: 24px; margin-bottom: 16px; color: #444; font-size: 15px; line-height: 2;">
+      <li>Door-to-door flyers in a 4-block radius</li>
+      <li>Facebook community groups for West Philadelphia neighborhoods</li>
+      <li>Nextdoor for Mill Creek</li>
+      <li>Partnerships with churches and schools to distribute flyers</li>
+      <li>Personal outreach to the 20 people from Phase 1 conversations</li>
+    </ul>
+
+    <div class="callout">
+      <p>Document everything. Photos, headcount, revenue, expenses, feedback. This becomes the first entry in S.R. Browning's impact report — and the evidence base for every future grant application.</p>
+    </div>
+
+    <h3>Phase 3 Deliverable</h3>
+    <p>One completed event. Documented attendance. Documented revenue. A Community Fund deposit — even if it's $50. The number is symbolic at this stage. The discipline is everything.</p>
+  </div>
+</section>
+
+<!-- PHASE 4 -->
+<section id="phase4">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 4 · Months 5–8</div>
+      <h2>Youth <span>Committee</span></h2>
+    </div>
+
+    <p>This phase overlaps with Phase 3 and can begin building while the first event is being planned. The Youth Committee is the most innovative and fundable element of the entire CDP — but only if it's structured with real authority, not symbolic participation.</p>
+
+    <h3>Step 1 — Partner with a School</h3>
+    <p>Identify one school in or adjacent to Mill Creek West — <strong>Sulzberger/Parkway West</strong> or <strong>James Rhoads Elementary</strong> are natural targets. Contact the principal or assistant principal about an after-school partnership. Frame it as a <strong>civic leadership program</strong>, not a tutoring program. Different ask, different response.</p>
+
+    <h3>Step 2 — Define the Structure</h3>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-title">Age Range</div>
+        <div class="phase-desc">13–18 years old. Old enough to have real opinions, young enough to grow with the organization.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-title">Size</div>
+        <div class="phase-desc">5–8 youth members to start. Small enough to be functional, large enough to represent multiple blocks.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-title">Selection</div>
+        <div class="phase-desc">Application-based, not whoever shows up first. This signals seriousness to youth and to funders.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-title">Meeting Cadence</div>
+        <div class="phase-desc">Monthly, with a defined agenda. Stan or a board member attends every meeting as the adult liaison.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-title">Real Authority</div>
+        <div class="phase-desc">Youth Committee gets a defined portion of youth-focused funds to allocate. Even $200 per quarter. Make it real, not symbolic.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-title">Block Captain Function</div>
+        <div class="phase-desc">Each member is assigned a block to represent — attending meetings as a youth voice and reporting back to the committee.</div>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <p>We aren't just building for the youth. We are building with them. That distinction is worth millions in grant funding if it's substantiated with real structure.</p>
+    </div>
+
+    <h3>Why This Is Fundable</h3>
+    <p>The Youth Committee concept — young people with real civic authority over a block they represent — is exactly the kind of innovative structure that attracts foundation investment. The William Penn Foundation, the Philadelphia Foundation's youth initiatives, and the City of Philadelphia Youth Commission all fund civic engagement programs. The key is that the authority must be genuine, documented, and visible. A Youth Committee that only "meets and advises" is not fundable. A Youth Committee that allocates funds and advocates at civic meetings is a program.</p>
+
+    <h3>Phase 4 Deliverable</h3>
+    <p>Youth Committee charter written. First cohort recruited (5–8 members). First meeting held. Meeting minutes documented. This documentation matters — it becomes proof of program for grant applications.</p>
+  </div>
+</section>
+
+<!-- PHASE 5 -->
+<section id="phase5">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 5 · Months 6–12</div>
+      <h2>Grant Strategy &amp; <span>Revenue</span></h2>
+    </div>
+
+    <p>Once nonprofit status is confirmed and the first event is documented, Stan begins pursuing external funding. This is not premature — it is precisely the right time. Funders want to see a track record before they invest. One event and a documented Youth Committee cohort is a track record.</p>
+
+    <h3>Philadelphia-Specific Funders to Target</h3>
+    <div class="grant-grid">
+      <div class="grant-card">
+        <div class="grant-card-name">William Penn Foundation</div>
+        <div class="grant-card-focus">Community development, arts, education in Philadelphia. Highest-priority target for Youth Committee and cultural programming.</div>
+        <span class="grant-card-type">Foundation</span>
+      </div>
+      <div class="grant-card">
+        <div class="grant-card-name">Philadelphia Foundation</div>
+        <div class="grant-card-focus">Community grants accessible to emerging nonprofits. The Wachman Fund specifically targets grassroots organizations.</div>
+        <span class="grant-card-type">Foundation</span>
+      </div>
+      <div class="grant-card">
+        <div class="grant-card-name">LISC Philadelphia</div>
+        <div class="grant-card-focus">Neighborhood economic development. Directly aligned with the CDP's community investment model.</div>
+        <span class="grant-card-type">CDFI</span>
+      </div>
+      <div class="grant-card">
+        <div class="grant-card-name">PA Dept. of Community & Economic Development</div>
+        <div class="grant-card-focus">Neighborhood improvement grants. Already active in Mill Creek West through the Rebuild program.</div>
+        <span class="grant-card-type">State / Government</span>
+      </div>
+      <div class="grant-card">
+        <div class="grant-card-name">Philadelphia Office of Arts, Culture & Creative Economy</div>
+        <div class="grant-card-focus">Event and programming grants. Perfect for the entertainment calendar component.</div>
+        <span class="grant-card-type">City Government</span>
+      </div>
+      <div class="grant-card">
+        <div class="grant-card-name">Philadelphia City Fund</div>
+        <div class="grant-card-focus">$25,000 general operating grants for organizations providing out-of-school time programming for youth. Highly aligned with the CDP's youth pillar.</div>
+        <span class="grant-card-type">Foundation</span>
+      </div>
+    </div>
+
+    <h3>Corporate Sponsorship Pipeline</h3>
+    <p>Every sponsorship ask should be framed as: <strong>"Your name associated with X residents served + community visibility + logo placement."</strong> Realistic early targets in West Philadelphia:</p>
+    <ul style="padding-left: 24px; margin-bottom: 24px; color: #444; font-size: 15px; line-height: 2;">
+      <li>TruMark Financial / Philadelphia Federal Credit Union — community investment programs</li>
+      <li>Independence Blue Cross — community health and wellness funding</li>
+      <li>PECO — community fund and neighborhood initiatives</li>
+      <li>Comcast — already sponsors HopePHL's Lancaster Avenue Jazz Festival</li>
+      <li>Local Lancaster Avenue businesses — the most accessible entry point</li>
+    </ul>
+
+    <h3>The Full Annual Events Calendar</h3>
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Program</th>
+          <th>Revenue Model</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>January</td><td>Fitness Program Registration</td><td>Registration fees</td></tr>
+        <tr><td>March / April</td><td>Spring Educational Trip (Spring Break)</td><td>Per-participant fees + grants</td></tr>
+        <tr><td>June / July</td><td>Summer Movie / Entertainment Series</td><td>Ticket sales + corporate sponsorship</td></tr>
+        <tr><td>August</td><td>Back-to-School Giveaway</td><td>Grant-funded + donations</td></tr>
+        <tr><td>November</td><td>Turkey Drive</td><td>Donation-funded</td></tr>
+        <tr><td>December</td><td>Toy Drive</td><td>Donation-funded + corporate sponsorship</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Build the Grant Tracking Spreadsheet Now</h3>
+    <p>A simple Google Sheet with five columns: Funder Name · Deadline · Grant Range · Requirements · Status. This is not optional — without a tracking system, grants get missed, deadlines pass, and the revenue pipeline stalls.</p>
+  </div>
+</section>
+
+<!-- PHASE 6 -->
+<section id="phase6">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Phase 6 · Year 2+</div>
+      <h2>Community <span>Infrastructure</span></h2>
+    </div>
+
+    <p>This is where the CDP's full vision becomes real programming rather than bullet points. By this stage, S.R. Browning has a track record, a community presence, a Youth Committee, and at least one active funding source. Now it scales with discipline.</p>
+
+    <div class="step-block">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h4>Formalize the Community Fund</h4>
+        <p>Open a dedicated savings account for the Community Fund, separate from operating funds. Create a transparent quarterly one-pager showing what came in and what went out. Share it publicly with the community. This single act of financial transparency builds more trust than any marketing.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h4>Launch the Quality of Life Programs</h4>
+        <p>With funding secured and track record established, partner with a fitness organization for the January program (explore the YMCA West Philly branch), coordinate with a travel partner for educational trips, and engage Philadelphia Mural Arts or the Streets Department on the street beautification component.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h4>Pursue Formal RCO Status</h4>
+        <p>In Philadelphia, Registered Community Organizations (RCOs) have formal standing in zoning hearings and development decisions. This gives S.R. Browning legitimate institutional power in Mill Creek West — not just social influence. This is the long-game move that separates organizations that matter from organizations that pass through.</p>
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h4>Publish the Year 1 Impact Report</h4>
+        <p>By end of Year 1, Stan should be able to document: number of residents served, events held, total revenue generated, Community Fund balance, Youth Committee members and blocks represented, and programs delivered. This becomes the fundraising document for Year 2 — and the proof of concept for every future partnership conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIVOTS -->
+<section id="pivots">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">Strategic Positioning</div>
+      <h2>The <span>Pivot Ideas</span> — Stan's White Space</h2>
+    </div>
+
+    <p>Based on what already exists in Mill Creek West, here are the five lanes where S.R. Browning & Co. has genuine, defensible room to operate. These are not alternatives to the CDP — they are ways to sharpen how each pillar gets executed.</p>
+
+    <div class="pivot-list">
+
+      <div class="pivot-card">
+        <div class="pivot-left">
+          <span class="pivot-emoji">🎭</span>
+          <span class="pivot-tag">Pivot 01</span>
+        </div>
+        <div>
+          <div class="pivot-title">The Cultural Economy Anchor</div>
+          <div class="gap-label">Gap: No neighborhood-owned cultural entertainment calendar</div>
+          <p>MCCP does community arts. HopePHL produces the Lancaster Avenue Jazz Festival — but that's a coalition event, not a neighborhood institution. Nobody is running a <strong>consistent, recurring entertainment calendar</strong> rooted specifically in Mill Creek West as a brand. Stan owns that lane.</p>
+          <div class="pivot-practice">
+            <div class="pivot-practice-label">What This Looks Like</div>
+            <ul>
+              <li>Quarterly neighborhood cultural nights — plays, spoken word, film, live music</li>
+              <li>Every ticket sold seeds the Community Fund</li>
+              <li>Partner with MCCP's ArtBUS rather than competing — let them bring the art, Stan provides the venue and ticketing infrastructure</li>
+              <li>Pursue West Philadelphia Creative Grants (William Penn Foundation-backed, $40K+ awarded in 2024) to fund programming</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pivot-card">
+        <div class="pivot-left">
+          <span class="pivot-emoji">💼</span>
+          <span class="pivot-tag">Pivot 02</span>
+        </div>
+        <div>
+          <div class="pivot-title">The Professional Pipeline — Made Local</div>
+          <div class="gap-label">Gap: No warm, local career development for 18–24 year olds</div>
+          <p>The West Philadelphia Skills Initiative is excellent — but it's institutional. PA CareerLink West is transitioning locations, creating a displacement gap in the workforce infrastructure. What's missing is something <strong>warm, culturally familiar, and neighborhood-rooted</strong>. The 18–24 age group in particular falls between youth services and adult workforce systems. That crack is Stan's territory.</p>
+          <div class="pivot-practice">
+            <div class="pivot-practice-label">What This Looks Like</div>
+            <ul>
+              <li>Monthly "Professional Saturdays" — resume clinics, LinkedIn workshops, mock interviews at Lucien Blackwell Community Center</li>
+              <li>Guest speakers who are from the neighborhood or look like the neighborhood</li>
+              <li>A "First Job" pipeline specifically for 18–24 year olds aged out of youth programs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pivot-card">
+        <div class="pivot-left">
+          <span class="pivot-emoji">🚌</span>
+          <span class="pivot-tag">Pivot 03</span>
+        </div>
+        <div>
+          <div class="pivot-title">The Community Trips Revenue Engine</div>
+          <div class="gap-label">Gap: No organized community travel program in the neighborhood</div>
+          <p>Nobody is running organized trips out of Mill Creek West. The city's summer field trips are tied to school enrollment — not available as standalone community experiences for adults and families year-round. This is genuinely unoccupied territory, and it's both a revenue engine and a community-building tool simultaneously.</p>
+          <div class="pivot-practice">
+            <div class="pivot-practice-label">What This Looks Like</div>
+            <ul>
+              <li>Start with a day trip to Washington D.C. — NMAAHC, Howard University campus, National Mall</li>
+              <li>Price at $35–$50/person including transportation; 40 people = $1,400–$2,000 revenue</li>
+              <li>Expand to overnight trips, then eventually international experiences</li>
+              <li>Apply for educational grants to subsidize costs — trips are highly fundable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pivot-card">
+        <div class="pivot-left">
+          <span class="pivot-emoji">🚀</span>
+          <span class="pivot-tag">Pivot 04</span>
+        </div>
+        <div>
+          <div class="pivot-title">Teen Entrepreneurship Track</div>
+          <div class="gap-label">Gap: No youth business and entrepreneurship programming in the neighborhood</div>
+          <p>MCCP focuses on creative arts. HopePHL centers on housing stability. The West Philadelphia Skills Initiative targets adults. Nobody is teaching <strong>business and entrepreneurship to teenagers</strong> in this neighborhood. This embedded in the Youth Committee structure turns it from a civic program into a pipeline for future community builders.</p>
+          <div class="pivot-practice">
+            <div class="pivot-practice-label">What This Looks Like</div>
+            <ul>
+              <li>10-week cohort for ages 14–18 called "Build Your Block" — business concepts through neighborhood problems</li>
+              <li>Each cohort ends with a mini pitch night in front of community members and local business owners</li>
+              <li>The best ideas get a micro-seed grant from the Community Fund — even $100–$250 to test the concept</li>
+              <li>Youth Committee helps select which pitches get funded — real decision-making authority</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pivot-card">
+        <div class="pivot-left">
+          <span class="pivot-emoji">🎨</span>
+          <span class="pivot-tag">Pivot 05</span>
+        </div>
+        <div>
+          <div class="pivot-title">Block Beautification as Event, Not Service</div>
+          <div class="gap-label">Gap: No block-level beautification with community energy attached</div>
+          <p>The city's $4.5M Rebuild investment covers the playground at 51st and Parrish — not the surrounding residential blocks. The vacancy rate is 23.3%. Visible blight is one of the most consistent complaints from residents. But rather than positioning street maintenance as charity, Stan turns it into a <strong>quarterly community event</strong> with music, food, and social energy attached.</p>
+          <div class="pivot-practice">
+            <div class="pivot-practice-label">What This Looks Like</div>
+            <ul>
+              <li>Quarterly "Block Up" events — 2–3 hours of cleaning, painting, and landscaping on a targeted block</li>
+              <li>Paired with a cookout, music, and a community resource table</li>
+              <li>Sponsored by Lancaster Avenue corridor businesses — their logo on T-shirts, their food at the cookout</li>
+              <li>Documented with before/after photos for grant reporting and social media</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>The White Space Summary</h3>
+    <table class="whitespace-table">
+      <thead>
+        <tr>
+          <th>The Gap</th>
+          <th>Stan's Lane</th>
+          <th>CDP Pillar It Activates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No neighborhood cultural entertainment calendar</td>
+          <td>Pivot 1 — Cultural Economy Anchor</td>
+          <td>Social</td>
+        </tr>
+        <tr>
+          <td>No local career development for 18–24</td>
+          <td>Pivot 2 — Professional Pipeline</td>
+          <td>Professional</td>
+        </tr>
+        <tr>
+          <td>No organized community travel</td>
+          <td>Pivot 3 — Community Trips</td>
+          <td>Academic + Social</td>
+        </tr>
+        <tr>
+          <td>No youth entrepreneurship in the neighborhood</td>
+          <td>Pivot 4 — Teen Entrepreneurship</td>
+          <td>Academic + Professional</td>
+        </tr>
+        <tr>
+          <td>No block-level beautification with social energy</td>
+          <td>Pivot 5 — Block Beautification as Event</td>
+          <td>Social + Physical</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="wrapper">
+    <div class="section-header">
+      <div class="section-tag">The Full Picture</div>
+      <h2>Implementation <span>Timeline</span></h2>
+    </div>
+
+    <table class="timeline-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Timeframe</th>
+          <th>Key Milestone</th>
+          <th>Cost Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="phase-badge">Phase 1</span><br><strong style="font-size:13px;">Ground Truth</strong></td>
+          <td>Months 1–2</td>
+          <td>20 conversations completed; community asset map documented; 5 success criteria answered</td>
+          <td>Time only</td>
+        </tr>
+        <tr>
+          <td><span class="phase-badge">Phase 2</span><br><strong style="font-size:13px;">Legal Foundation</strong></td>
+          <td>Months 2–4</td>
+          <td>LLC registered; EIN obtained; bank account open; 501(c)(3) filing submitted or fiscal sponsor secured; board identified; trademark filed</td>
+          <td>$500–$2,000</td>
+        </tr>
+        <tr>
+          <td><span class="phase-badge">Phase 3</span><br><strong style="font-size:13px;">Seed Event</strong></td>
+          <td>Months 4–6</td>
+          <td>First event executed and documented; Community Fund first deposit made</td>
+          <td>$330–$600</td>
+        </tr>
+        <tr>
+          <td><span class="phase-badge">Phase 4</span><br><strong style="font-size:13px;">Youth Committee</strong></td>
+          <td>Months 5–8</td>
+          <td>Charter written; first cohort of 5–8 youth recruited; first meeting held and documented</td>
+          <td>Minimal</td>
+        </tr>
+        <tr>
+          <td><span class="phase-badge">Phase 5</span><br><strong style="font-size:13px;">Grant Strategy</strong></td>
+          <td>Months 6–12</td>
+          <td>First grant application submitted; corporate sponsorship deck created; full annual calendar drafted</td>
+          <td>Variable</td>
+        </tr>
+        <tr>
+          <td><span class="phase-badge">Phase 6</span><br><strong style="font-size:13px;">Infrastructure</strong></td>
+          <td>Year 2+</td>
+          <td>RCO status pursued; Community Fund formalized; Year 1 Impact Report published</td>
+          <td>Funded by grants</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"><span>The North Star</span></div>
+
+    <p>Mill Creek West doesn't need another organization with a big plan that disappears after six months. It needs one consistent, credible presence that shows up and delivers — even small — over time. That's how S.R. Browning & Co. earns the right to grow.</p>
+
+    <p>The CDP is a strong vision. The discipline is in doing one thing, documenting it, and building from there. One event. One Youth Committee cohort. One grant. One partnership. Then the next one.</p>
+
+    <ul class="checklist">
+      <li><div class="check-box"></div> <strong>Phase 1 complete:</strong> 20 conversations done, asset map built, 5 questions answered</li>
+      <li><div class="check-box"></div> <strong>Phase 2 complete:</strong> Legal structure in place, bank account open, board identified</li>
+      <li><div class="check-box"></div> <strong>Phase 3 complete:</strong> First event executed, Community Fund first deposit made</li>
+      <li><div class="check-box"></div> <strong>Phase 4 complete:</strong> Youth Committee first cohort assembled and meeting</li>
+      <li><div class="check-box"></div> <strong>Phase 5 complete:</strong> First grant application submitted, annual calendar built</li>
+      <li><div class="check-box"></div> <strong>Phase 6 complete:</strong> Year 1 Impact Report published, RCO status in progress</li>
+    </ul>
+  </div>
+</section>
+
+<!-- KEY REMINDER -->
+<div class="key-reminder">
+  <div class="wrapper">
+    <h2>DO ONE THING.<br><span>DOCUMENT IT.</span><br>BUILD FROM THERE.</h2>
+    <p>The vision is real. What you need to build now is the bridge between the vision and the first dollar.</p>
+    <p style="margin-top: 24px; font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4);">S.R. Browning & Co. · Lead. Expand. Impact. · Mill Creek West, Philadelphia</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>S.R. BROWNING & CO.</strong>
+  Community Development Plan · Mill Creek West, Philadelphia, PA · Est. 2026
+</div>
+
+</body>
+</html>
